@@ -24,7 +24,9 @@
 - [x] Assign early player movement actions. (Up, down, left, right)
 - [x] Draw player sprite and designate starting location.
     - Tie player movements actions to sprite.
-- [] Lay groundwork for game-map generation and interaction.
-    - [] Create entity class to represent world objects.
-    - [] Define tile types. (Transparent, walkable, etc...)
+- [X] Lay groundwork for game-map generation and interaction.
+    - [X] Create entity class to represent world objects.
+    - [X] Define tile types. (Transparent, walkable, etc...)
+    - [X] Create Engine and GameMap classes to simplify throughput, readability, and functionality. 
 - [] Create random generation function for game-map.
+    - [] Create class specifically for map generation.
