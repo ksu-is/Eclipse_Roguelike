@@ -30,3 +30,7 @@
     - [X] Create Engine and GameMap classes to simplify throughput, readability, and functionality. 
 - [] Create random generation function for game-map.
     - [] Create class specifically for map generation.
+    - [] Fill new class with functions to support.
+- [] Add field-of-view so whole map is no longer visible from any location.
+- [] Add monster generation to map.
+- [] Add a basic form of combat.
