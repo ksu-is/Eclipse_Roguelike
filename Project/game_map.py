@@ -8,6 +8,10 @@ class GameMap:
         self.width, self.height = width, height
         self.tiles = np.full((width, height), fill_value=tile_types.wall, order="F")
 
+    #These two arrays keep track of what is visible in the players immediate area and what they have seen already.
+    self.visible = np.full((width, height), fill_value=False, order="F")
+    self.explored = np.full((width, height), fill_value=False, order="F")
+
     def in_bounds(self, x:int, y:int) -> bool:
         return 0 <= x < self.width and 0 <= y < self.height
 
