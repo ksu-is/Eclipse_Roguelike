@@ -5,6 +5,6 @@ This is a student assignment and project for a miniature roguelike game traditio
 
 Library requirements are in the requirements.txt file found in the project folder.
 
-## Basic random generation examples below
+## Basic random generation and Field of View/Fog of War examples below:
 ![Random dungeon example](https://github.com/ksu-is/Eclipse_Roguelike/blob/main/Pictures/Random%20Generation%20Example.png)
-![Random dungeon example 2](https://github.com/ksu-is/Eclipse_Roguelike/blob/main/Pictures/Random%20Generation%20Example%202.png)
+![Field of View / Fog of War](https://github.com/ksu-is/Eclipse_Roguelike/blob/main/Pictures/Fog%20of%20War%20and%20Field%20of%20View.png)
