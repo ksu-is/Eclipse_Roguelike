@@ -1,4 +1,9 @@
-from typing import Tuple
+from __future__ import annotations
+
+import random
+from typing import Iterator, Tuple
+
+import tcod
 
 from game_map import GameMap
 import tile_types
@@ -24,6 +29,31 @@ class RectangularRoom:
     def inner(self) -> Tuple[slice, slice]:
         return slice(self.x1 + 1, self.x2), slice(self.y1 + 1, self.y2)
     
+    # During map generation we do not want room or hall overlap, since that could be chaotic. This function returns a true/false statement depending of overlap.
+    def intersects(self, other: RectangularRoom) -> bool:
+        return (
+            self.x1 <= other.x2
+            and self.x2 >= other.x1
+            and self.y1 <= other.y2
+            and self.y2 >= other.y1
+        )
+    
+def tunnel_between(
+    start: Tuple[int, int], end: Tuple[int, int]
+) -> Iterator[Tuple[int, int]]:
+    x1, y1 = start
+    x2, y2 = end
+    # boolean that either moves horizontally then vertically, or the opposite, based on a 50% chance.
+    if random.random() < 0.5:
+        corner_x, corner_y = x2, y1
+    else:
+        corner_x, corner_y = x1, y2
+        
+    for x, y in tcod.los.bresenham((x1, y1), (corner_x, corner_y)).tolist():
+        yield x, y
+    for x, y in tcod.los.bresenham((corner_x, corner_y), (x2, y2)).tolist():
+        yield x, y
+        
 def generate_dungeon(map_width, map_height) -> GameMap:
     dungeon = GameMap(map_width, map_height)
 
@@ -32,5 +62,8 @@ def generate_dungeon(map_width, map_height) -> GameMap:
 
     dungeon.tiles[room_1.inner] = tile_types.floor
     dungeon.tiles[room_2.inner] = tile_types.floor
+    
+    for x, y in tunnel_between(room_2.center, room_1.center):
+        dungeon.tiles[x, y] = tile_types.floor
 
     return dungeon
