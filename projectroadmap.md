@@ -31,6 +31,6 @@
 - [X] Create random generation function for game-map.
     - [X] Create class specifically for map generation.
     - [X] Fill new class with functions to support.
-- [] Add field-of-view so whole map is no longer visible from any location.
+- [X] Add field-of-view so whole map is no longer visible from any location.
 - [] Add monster generation to map.
 - [] Add a basic form of combat.
